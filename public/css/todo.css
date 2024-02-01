@@ -31,13 +31,25 @@ article.todo {
     padding: 1rem;
     display: grid;
     grid-template-columns: 1fr max-content;
-    grid-template-rows: min-content, min-content;
+    grid-template-rows: min-content min-content;
+    grid-template-areas:
+        "content controls"
+        "footer controls";
+}
+
+article.todo .controls {
+    align-self: center;
+    grid-area: controls;
+}
+
+article.todo .content {
+    grid-area: content;
 }
 
 article.todo .footer {
-    grid-column-start: 1;
-    grid-column-end: 3;
+    grid-area: footer;
 }
+
 
 article.todo:nth-child(odd) {
     background-color: rgb(238, 238, 238);
@@ -76,11 +88,7 @@ article.todo time.creation_date:before {
     content: 'created ';
 }
 
-article.todo .controls {
-    float: right;
-}
-
-article.todo > .controls > * {
+article.todo .controls > * {
     display: inline-block;
     vertical-align: middle;
 }
