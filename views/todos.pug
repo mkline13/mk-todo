@@ -1,0 +1,33 @@
+extends super
+
+block templates
+    template#todo_template
+        article.todo
+            p.content(data-field='content')
+            .controls
+                time.due_date(data-field='due_date')
+                button.icon.check
+                button.icon.edit
+            time.creation_date(data-field='creation_date')
+
+block scripts
+
+block nav
+    a(href='/') a link
+
+block todos
+    script.
+        const demo = {
+            title: 'Hello World',
+            creation_date: "1/2/3",
+            content: "Alabama alabama whoah alabama alabameeyyyyyyyyyyyyyyyyyyyyyyy",
+            due_date: "2/3/4"
+        }
+
+        for (let i=0; i<10; i++) {
+            demo.id = i;
+            const instance = templates.todo_template(demo);
+            todos.appendChild(instance);
+        }
+
+        console.log(templates);

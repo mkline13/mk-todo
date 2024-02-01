@@ -1,0 +1,120 @@
+
+/* LAYOUT */
+#pagecontent {
+    max-width: 75ch;
+    padding: 1rem;
+}
+
+#pagecontent > h1 {
+    background-color: black;
+    color: white;
+    margin: 0;
+
+    --padding: 3rem;
+    padding: var(--padding);
+    padding-bottom: calc(var(--padding) * 0.87);
+    font-size: 3rem;
+}
+
+#pagecontent > * + * {
+    margin-top: 1rem;
+}
+
+
+/* TODO ITEMS */
+
+/* #todos > * + * {
+    border-bottom: solid 1px lightgray;
+} */
+
+article.todo {
+    padding: 1rem;
+    display: grid;
+}
+
+article.todo:nth-child(odd) {
+    background-color: rgb(238, 238, 238);
+}
+
+article.todo > header, footer {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+article.todo > header > h1 {
+    font-size: medium;
+}
+
+article.todo time.due_date::before {
+    content: 'due ';
+}
+
+article.todo > p {
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+
+article.todo > footer > * {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+article.todo time.creation_date {
+    color: gray;
+}
+
+article.todo time.creation_date:before {
+    content: 'created ';
+}
+
+article.todo > .controls {
+    float: right;
+}
+
+article.todo > .controls > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+article.todo > .controls > * + * {
+    margin-left: 0.5em;
+}
+
+.icon {
+    margin: 0.2em;
+    width: 2em;
+    height: 2em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 80%;
+}
+
+.icon.menu {
+    background-image: url('/public/icons/menu.svg');
+}
+
+.icon.plus {
+    background-image: url('/public/icons/plus.svg');
+}
+
+.icon.check {
+    background-image: url('/public/icons/check.svg');
+}
+
+.icon.edit {
+    background-image: url('/public/icons/edit-pencil.svg');
+}
+
+button.icon {
+    width: 2em;
+    height: 2em;
+    border: 2px solid lightgray;
+    border-radius: 5em;
+    background-color: white;
+}
+
+button.icon:hover {
+    background-color: lightyellow;
+}
