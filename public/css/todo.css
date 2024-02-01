@@ -22,10 +22,9 @@
 
 
 /* TODO ITEMS */
-
-/* #todos > * + * {
+#todos > *:not(:last-child) {
     border-bottom: solid 1px lightgray;
-} */
+}
 
 article.todo {
     padding: 1rem;
@@ -42,17 +41,21 @@ article.todo .controls {
     grid-area: controls;
 }
 
+article.todo .controls > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+article.todo .controls > * + * {
+    margin-left: 0.5em;
+}
+
 article.todo .content {
     grid-area: content;
 }
 
 article.todo .footer {
     grid-area: footer;
-}
-
-
-article.todo:nth-child(odd) {
-    background-color: rgb(238, 238, 238);
 }
 
 article.todo > header, footer {
@@ -86,15 +89,6 @@ article.todo time.creation_date {
 
 article.todo time.creation_date:before {
     content: 'created ';
-}
-
-article.todo .controls > * {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-article.todo > .controls > * + * {
-    margin-left: 0.5em;
 }
 
 .icon {
