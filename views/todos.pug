@@ -3,15 +3,18 @@ extends super
 block templates
     template#todo_template
         article.todo
-            p.content(data-field='task')
+            p.content
+                x(name='task')
             .controls
                 p due 
-                    time.due_date(data-field='due_date')
+                    time.due_date
+                        x(name='due_date', path='../..')
                 button.icon.check
                 button.icon.edit
             footer
                 p created 
-                    time.creation_date(data-field='creation_date')
+                    time.creation_date
+                        x(name='creation_date', path='../..')
 
 block scripts
     script.
@@ -32,6 +35,7 @@ block scripts
 block nav
     a(href='/') a link
 
+
 block todos
     script(type='module').
         // get todos from server
@@ -39,6 +43,5 @@ block todos
         
         // render template
         for (const task of todoItems) {
-            const instance = templates.todo_template(task);
-            todos.appendChild(instance);
+            renderTemplate(todo_template, todos, task);
         }
