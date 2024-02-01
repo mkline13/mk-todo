@@ -3,7 +3,7 @@ extends super
 block templates
     template#todo_template
         article.todo
-            p.content(data-field='content')
+            p.content(data-field='task')
             .controls
                 p due 
                     time.due_date(data-field='due_date')
@@ -15,24 +15,30 @@ block templates
 
 block scripts
     script.
-        
+        async function getTodos() {
+            const res = await fetch('/todos');
+            if (res.ok) {
+                const data = await res.json();
+                return data;
+            }
+            else {
+                const error = await res.text();
+                console.error(error);
+                return [];
+            }
+        }
+
 
 block nav
     a(href='/') a link
 
 block todos
-    script.
-        const demo = {
-            title: 'Hello World',
-            creation_date: "1/2/3",
-            content: "Alabama alabama whoah alabama alabameeyyyyyyyyyyyyyyyyyyyyyyy",
-            due_date: "2/3/4"
-        }
-
-        for (let i=0; i<10; i++) {
-            demo.id = i;
-            const instance = templates.todo_template(demo);
+    script(type='module').
+        // get todos from server
+        const todoItems = await getTodos();
+        
+        // render template
+        for (const task of todoItems) {
+            const instance = templates.todo_template(task);
             todos.appendChild(instance);
         }
-
-        console.log(templates);
