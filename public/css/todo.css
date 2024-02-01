@@ -54,7 +54,7 @@ article.todo .content {
     grid-area: content;
 }
 
-article.todo .footer {
+article.todo footer {
     grid-area: footer;
 }
 
@@ -65,10 +65,6 @@ article.todo > header, footer {
 
 article.todo > header > h1 {
     font-size: medium;
-}
-
-article.todo time.due_date::before {
-    content: 'due ';
 }
 
 article.todo > p {
@@ -83,12 +79,8 @@ article.todo > footer > * {
     margin-bottom: 0;
 }
 
-article.todo time.creation_date {
+article.todo footer {
     color: gray;
-}
-
-article.todo time.creation_date:before {
-    content: 'created ';
 }
 
 .icon {

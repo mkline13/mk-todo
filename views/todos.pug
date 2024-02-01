@@ -5,12 +5,17 @@ block templates
         article.todo
             p.content(data-field='content')
             .controls
-                time.due_date(data-field='due_date')
+                p due 
+                    time.due_date(data-field='due_date')
                 button.icon.check
                 button.icon.edit
-            time.creation_date.footer(data-field='creation_date')
+            footer
+                p created 
+                    time.creation_date(data-field='creation_date')
 
 block scripts
+    script.
+        
 
 block nav
     a(href='/') a link
